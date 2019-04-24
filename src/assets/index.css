@@ -43,10 +43,10 @@ body {
 
 .todoapp {
   background: #fff;
-  margin: 280px 0 40px 0;
+  margin: 180px 0 40px 0;
   position: relative;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
-              0 25px 50px 0 rgba(0, 0, 0, 0.1);
+    0 25px 50px 0 rgba(0, 0, 0, 0.1);
 }
 
 .todoapp input::-webkit-input-placeholder {
@@ -114,12 +114,13 @@ body {
 
 .toggle-all {
   text-align: center;
-  border: none; /* Mobile Safari */
+  border: none;
+  /* Mobile Safari */
   opacity: 0;
   position: absolute;
 }
 
-.toggle-all + label {
+.toggle-all+label {
   width: 60px;
   height: 34px;
   font-size: 0;
@@ -131,14 +132,14 @@ body {
   cursor: pointer;
 }
 
-.toggle-all + label:before {
+.toggle-all+label:before {
   content: '❯';
   font-size: 22px;
   color: #e6e6e6;
   padding: 10px 27px 10px 27px;
 }
 
-.toggle-all:checked + label:before {
+.toggle-all:checked+label:before {
   color: #35b558;
 }
 
@@ -175,7 +176,8 @@ body {
   top: 0;
   bottom: 0;
   margin: auto 0;
-  border: none; /* Mobile Safari */
+  border: none;
+  /* Mobile Safari */
   -webkit-appearance: none;
   appearance: none;
 }
@@ -185,11 +187,11 @@ body {
   opacity: 0;
 }
 
-.todo-list li .toggle + label {
+.todo-list li .toggle+label {
   position: relative;
 }
 
-.todo-list li .toggle + label:before{
+.todo-list li .toggle+label:before {
   display: inline-block;
   position: absolute;
   top: 15px;
@@ -201,12 +203,12 @@ body {
   border-radius: 50%;
 }
 
-.todo-list li .toggle:checked + label:before {
+.todo-list li .toggle:checked+label:before {
   background: #35b558;
   border-color: #35b558;
 }
 
-.todo-list li .toggle:checked + label:after {
+.todo-list li .toggle:checked+label:after {
   content: '';
   position: absolute;
   top: 20px;
@@ -280,10 +282,10 @@ body {
   height: 50px;
   overflow: hidden;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2),
-              0 8px 0 -3px #f6f6f6,
-              0 9px 1px -3px rgba(0, 0, 0, 0.2),
-              0 16px 0 -6px #f6f6f6,
-              0 17px 2px -6px rgba(0, 0, 0, 0.2);
+    0 8px 0 -3px #f6f6f6,
+    0 9px 1px -3px rgba(0, 0, 0, 0.2),
+    0 16px 0 -6px #f6f6f6,
+    0 17px 2px -6px rgba(0, 0, 0, 0.2);
 }
 
 .todo-count {
@@ -291,7 +293,7 @@ body {
   text-align: left;
 }
 
-.todo-count strong{
+.todo-count strong {
   color: #35b558;
 }
 
@@ -326,7 +328,7 @@ body {
   color: #35b558;
 }
 
-.clear-completed{
+.clear-completed {
   float: right;
   position: relative;
   text-decoration: none;
@@ -344,6 +346,7 @@ body {
   Can't use it globally since it destroys checkboxes in Firefox
 */
 @media screen and (-webkit-min-device-pixel-ratio:0) {
+
   .toggle-all,
   .todo-list li .toggle {
     background: none;
@@ -362,4 +365,27 @@ body {
   .filters {
     bottom: 10px;
   }
+}
+
+
+.info {
+  margin: 65px auto 0;
+  color: #bfbfbf;
+  font-size: 10px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  text-align: center;
+}
+
+.info p {
+  line-height: 1;
+}
+
+.info a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.info a:hover {
+  text-decoration: underline;
 }
