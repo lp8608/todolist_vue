@@ -1,34 +1,26 @@
 <template>
-  <Todo :todos.sync="todos"></Todo>
+
+  <div>
+    <div>
+      <router-link to="/">首页 \</router-link>
+      <router-link to="/all">新闻 \</router-link>
+    </div>
+    <!-- <Todo ></Todo> -->
+    <router-view ></router-view>
+  </div>
+
 </template>
 
 <script>
-import Todo from './components/Todo.vue'
+// import Todo from './components/Todo.vue'
+
 export default {
   name: 'app',
   components: {
-    Todo
+    // Todo
   },
   data () {
-    return {
-      todos: [{
-        title: '代办一',
-        completed: true,
-        editing: false
-      }, {
-        title: '代办二',
-        completed: false,
-        editing: false
-      }, {
-        title: '代办三',
-        completed: false,
-        editing: false
-      }, {
-        title: '代办4',
-        completed: false,
-        editing: false
-      }]
-    }
+    return { }
   },
   computed: {},
   methods: {}

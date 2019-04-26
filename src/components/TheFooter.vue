@@ -6,7 +6,7 @@
         <strong>{{todos.length}}</strong> todo
       </span>
       <ul class="filters">
-        <li><a href="#/all"
+        <!-- <li><a href="#/all"
              :class="{selected: filter === 'all'}"
              @click="changeFilterHandler('all')">All</a></li>
         <li><a href="#/active"
@@ -14,7 +14,11 @@
              @click="changeFilterHandler('active')">Active</a></li>
         <li><a href="#/completed"
              :class="{selected: filter === 'completed'}"
-             @click="changeFilterHandler('completed')">Completed</a></li>
+             @click="changeFilterHandler('completed')">Completed</a></li> -->
+             <li><router-link to="/all" >All</router-link></li>
+             <li><router-link to="/active" >Active</router-link></li>
+             <li> <router-link to="/completed" >Completed</router-link></li>
+            
       </ul>
       <button class="clear-completed"
               @click="cleanCompletedHandler">Clear completed</button>
