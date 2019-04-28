@@ -14,6 +14,7 @@
 <script>
 import '@/assets/base.css'
 import '@/assets/index.css'
+import { mapActions } from 'vuex';
 export default {
   name: "TheHeader",
 
@@ -28,13 +29,16 @@ export default {
   computed: {},
 
   methods: {
+    ...mapActions('addTodo'),
     //新增todo
     addTodoHandler () {
       if (this.newTodo.trim()) {
-        this.$emit('addTodoHandler', { title: this.newTodo.trim(), completed: false });
+        // this.$emit('addTodoHandler', { title: this.newTodo.trim(), completed: false });
+        this.addTodo({ title: this.newTodo.trim(), completed: false });
       }
       this.newTodo = "";
     },
+
   }
 }
 

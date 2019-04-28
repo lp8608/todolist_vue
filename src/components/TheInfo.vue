@@ -20,13 +20,7 @@ export default {
   name: "TheInfo",
   data () {
     return {};
-  },
-
-  components: {},
-
-  computed: {},
-
-  methods: {}
+  }
 };
 </script>
 <style scoped>

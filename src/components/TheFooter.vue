@@ -3,7 +3,7 @@
   <section class="main">
     <footer class="footer">
       <span class="todo-count">
-        <strong>{{todos.length}}</strong> todo
+        <strong>{{todosCount}}</strong> todo
       </span>
       <ul class="filters">
         <!-- <li><a href="#/all"
@@ -15,44 +15,53 @@
         <li><a href="#/completed"
              :class="{selected: filter === 'completed'}"
              @click="changeFilterHandler('completed')">Completed</a></li> -->
-             <li><router-link to="/all" >All</router-link></li>
-             <li><router-link to="/active" >Active</router-link></li>
-             <li> <router-link to="/completed" >Completed</router-link></li>
-            
+        <li>
+          <router-link to="/all">All</router-link>
+        </li>
+        <li>
+          <router-link to="/active">Active</router-link>
+        </li>
+        <li>
+          <router-link to="/completed">Completed</router-link>
+        </li>
+
       </ul>
       <button class="clear-completed"
-              @click="cleanCompletedHandler">Clear completed</button>
+              @click="removeCompleted">Clear completed</button>
     </footer>
   </section>
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
 export default {
   data () {
-    return {
-    };
+    return {};
   },
 
-  props: {
-    filter: String,
-    todos: {
-      type: Array,
-      default: function () {
-        return [];
-      }
-    }
-  },
+  // props: {
+  //   filter: String,
+  //   todos: {
+  //     type: Array,
+  //     default: function () {
+  //       return [];
+  //     }
+  //   }
+  // },
   components: {},
 
-  computed: {},
+  computed: {
+    ...mapGetters('todosCount')
+  },
 
   methods: {
-    changeFilterHandler: function (filter) {
-      this.$emit('changeFilterHandler', filter)
-    },
-    cleanCompletedHandler: function () {
-      this.$emit('cleanCompletedHandler')
-    }
+    // changeFilterHandler: function (filter) {
+    //   this.$emit('changeFilterHandler', filter)
+    // },
+    // cleanCompletedHandler: function () {
+    //   this.$emit('cleanCompletedHandler')
+    // }
+    ...mapActions('removeCompleted')
   }
 }
 

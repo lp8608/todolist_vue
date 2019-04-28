@@ -4,11 +4,11 @@
     <input id="toggle-all"
            class="toggle-all"
            type="checkbox"
-           v-model="allDone">
+           @click="setAllTodoStatus">
     <label for="toggle-all">Mark all as complete</label>
     <ul class="todo-list">
       <li class="todo "
-          v-for="(todo, index) in showTodos"
+          v-for="(todo, index) in filterTodos"
           :key="index"
           v-bind:class="{completed: todo.completed,editing: todo == editTodo}">
         <div class="view">
@@ -35,21 +35,22 @@
 <script>
 import '@/assets/base.css'
 import '@/assets/index.css'
+import { mapGetters, mapActions } from 'vuex';
 export default {
   name: "TodoBody",
-  props: {
-    todos: {
-      type: Array,
-      required: true,
-      default: function () {
-        return [];
-      }
-    },
-    filter: {
-      type: String,
-      default: 'all'
-    }
-  },
+  // props: {
+  //   todos: {
+  //     type: Array,
+  //     required: true,
+  //     default: function () {
+  //       return [];
+  //     }
+  //   },
+  //   filter: {
+  //     type: String,
+  //     default: 'all'
+  //   }
+  // },
   data () {
     return {
       newTodo: '',
@@ -58,31 +59,34 @@ export default {
     }
   },
   computed: {
-    showTodos () {
-      let filter = this.filter;
-      let filtedTodos = this.todos.filter(data => {
-        if (filter == "all") {
-          return data;
-        } else if (filter == "active") {
-          return !data.completed;
-        } else if (filter == "completed") {
-          return data.completed;
-        }
-
-      });
-      return filtedTodos;
-    },
+    ...mapGetters('filterTodos', 'todos'),
+    // showTodos () {
+    //   let filter = this.filter;
+    //   let filtedTodos = this.todos.filter(data => {
+    //     if (filter == "all") {
+    //       return data;
+    //     } else if (filter == "active") {
+    //       return !data.completed;
+    //     } else if (filter == "completed") {
+    //       return data.completed;
+    //     }
+    //   });
+    //   return filtedTodos;
+    // },
     allDone: {
       get: function () {
-        return this.todos.every(data => data.completed);
+        // return this.todos.every(data => data.completed);
+        return this.todos();
       },
       set: function (value) {
-        this.todos.forEach(data => data.completed = value);
+        this.setAllTodos(value);
       }
 
     }
   },
   methods: {
+    ...mapActions('setAllTodos'),
+
     //编辑任务
     editTodoHandler (todo) {
       console.log("editTodoHandler");
