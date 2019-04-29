@@ -4,7 +4,7 @@
     <input id="toggle-all"
            class="toggle-all"
            type="checkbox"
-           @click="setAllTodoStatus">
+           v-model="allDone">
     <label for="toggle-all">Mark all as complete</label>
     <ul class="todo-list">
       <li class="todo "
@@ -38,19 +38,6 @@ import '@/assets/index.css'
 import { mapGetters, mapActions } from 'vuex';
 export default {
   name: "TodoBody",
-  // props: {
-  //   todos: {
-  //     type: Array,
-  //     required: true,
-  //     default: function () {
-  //       return [];
-  //     }
-  //   },
-  //   filter: {
-  //     type: String,
-  //     default: 'all'
-  //   }
-  // },
   data () {
     return {
       newTodo: '',
@@ -59,33 +46,20 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('filterTodos', 'todos'),
-    // showTodos () {
-    //   let filter = this.filter;
-    //   let filtedTodos = this.todos.filter(data => {
-    //     if (filter == "all") {
-    //       return data;
-    //     } else if (filter == "active") {
-    //       return !data.completed;
-    //     } else if (filter == "completed") {
-    //       return data.completed;
-    //     }
-    //   });
-    //   return filtedTodos;
-    // },
+    ...mapGetters(['filterTodos', 'todos']),
+
     allDone: {
+      //get方法没有调用，此处不需要
       get: function () {
-        // return this.todos.every(data => data.completed);
-        return this.todos();
+        return true;
       },
       set: function (value) {
         this.setAllTodos(value);
       }
-
     }
   },
   methods: {
-    ...mapActions('setAllTodos'),
+    ...mapActions(['setAllTodos', 'removeTodo', 'completedTodo']),
 
     //编辑任务
     editTodoHandler (todo) {
@@ -105,10 +79,11 @@ export default {
     },
     //删除单条todo
     deleteSingalTodo (todo) {
-      var index = this.todos.indexOf(todo);
-      if (index > -1) {
-        this.todos.splice(index, 1);
-      }
+      // var index = this.todos.indexOf(todo);
+      // if (index > -1) {
+      //   this.todos.splice(index, 1);
+      // }
+      this.removeTodo(todo);
     },
 
 

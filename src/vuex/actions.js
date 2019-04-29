@@ -8,37 +8,37 @@ import {
 } from './mutation-types'
 
 export const changeFilter = ({
-  dispatch
+  commit
 }, filter) => {
-  dispatch(CHANGEFILTER, filter)
+  commit(CHANGEFILTER, filter)
 }
 
 export const addTodo = ({
-  dispatch
+  commit
 }, todo) => {
-  dispatch(ADDTODO, todo);
+  commit(ADDTODO, todo);
 }
 
 
 export const removeTodo = ({
-  dispatch
+  commit
 }, todo) => {
-  dispatch(REMOVETODO, todo)
+  commit(REMOVETODO, todo)
 }
 export const setAllTodos = ({
-  dispatch
+  commit
 }, isSelected) => {
-  dispatch(SETALLTODOS, isSelected)
+  commit(SETALLTODOS, isSelected)
 }
 
 export const removeCompleted = ({
-  dispatch
+  commit
 }) => {
-  dispatch(REMOVECOMPLETED)
+  commit(REMOVECOMPLETED)
 }
 
 export const completedTodo = ({
-  dispatch
+  commit
 }, todo) => {
-  dispatch(COMPLETETODO, todo)
+  commit(COMPLETETODO, todo)
 }

@@ -23,7 +23,7 @@ Vue.use(Vuex)
 const showLog = (store) => {
   let preState = lodash.cloneDeep(store.state);
   store.subscribe((mutations, state) => {
-    console.log("pre state" + preState + "current state:" + state);
+    console.log("pre state", preState, "current state:", state);
   });
 }
 

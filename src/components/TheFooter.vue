@@ -51,7 +51,7 @@ export default {
   components: {},
 
   computed: {
-    ...mapGetters('todosCount')
+    ...mapGetters(['todosCount'])
   },
 
   methods: {
@@ -61,7 +61,7 @@ export default {
     // cleanCompletedHandler: function () {
     //   this.$emit('cleanCompletedHandler')
     // }
-    ...mapActions('removeCompleted')
+    ...mapActions(['removeCompleted'])
   }
 }
 

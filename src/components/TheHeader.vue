@@ -29,7 +29,7 @@ export default {
   computed: {},
 
   methods: {
-    ...mapActions('addTodo'),
+    ...mapActions(['addTodo']),
     //新增todo
     addTodoHandler () {
       if (this.newTodo.trim()) {

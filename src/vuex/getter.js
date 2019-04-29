@@ -9,7 +9,7 @@ export let todosCount = (state) => {
 }
 
 export let filterTodos = (state) => {
-  let filtedTodos = this.todos.filter(data => {
+  let filtedTodos = state.todos.filter(data => {
     if (state.filter == "all") {
       return data;
     } else if (state.filter == "active") {

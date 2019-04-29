@@ -32,17 +32,30 @@ export default {
     return {}
   },
   computed: {
-    ...mapGetters('todos', 'filter')
+    ...mapGetters(['todos', 'filter'])
   },
   methods: {
-    ...mapActions('addTodo', 'setAllCompleted', 'changeFilter')
+    ...mapActions(['addTodo', 'setAllCompleted', 'changeFilter'])
   },
-  beforeRouteUpdate (to, from, next) {
-    // this.filter = to.params.filter;
-    this.changeFilter(to.params.filter)
-    next();
+  // 导航守卫，更新router时调用
+  // beforeRouteUpdate (to, from, next) {
+  //   // this.filter = to.params.filter;
+  //   console.log(to.params.filter);
+  //   this.changeFilter(to.params.filter)
+  //   next();
+  // },
+  //创建组件时调用
+  created () {
+    // console.log(this.$route)
+    this.changeFilter(this.$route.params.filter || 'all')
   },
-
+  //观察$route的
+  watch: {
+    '$route': function () {
+      // console.log(this.$route);
+      this.changeFilter(this.$route.params.filter || 'all')
+    }
+  },
 
 
 }
